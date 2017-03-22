@@ -1,9 +1,15 @@
 jediluke_cowboy
 =====
 
-An OTP application
+A complete Erlang release of a cowboy webserver project, hosting my simple blog/website.
 
 Build
 -----
 
-    $ rebar3 compile
+Create a release
+
+	rebar3 as prod release
+
+Start the release
+
+	./_build/prod/rel/jediluke_cowboy/bin/jediluke_cowboy start
