@@ -10,6 +10,6 @@ Create a release
 
 	rebar3 as prod release
 
-Start the release
+Start the release (su priveledges required to use port 80 on FreeBSD)
 
-	./_build/prod/rel/jediluke_cowboy/bin/jediluke_cowboy start
+	sudo ./_build/prod/rel/jediluke_cowboy/bin/jediluke_cowboy start
