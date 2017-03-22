@@ -34,7 +34,7 @@ configure_cowboy() ->
         	{"/", cowboy_static, {priv_file, jediluke_cowboy, "static/index.html"}}
         ]}
     ]),
-    {ok, _} = cowboy:start_clear(http, 100, [{port, 8080}], #{
+    {ok, _} = cowboy:start_clear(http, 100, [{port, 80}], #{
     	env => #{dispatch => Dispatch}
     }),
     ok.
