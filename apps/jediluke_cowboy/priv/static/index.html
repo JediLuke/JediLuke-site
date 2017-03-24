@@ -41,6 +41,8 @@ h1 {
 	font-family: 	"Raleway";
 	text-transform: uppercase;
 	font-size: 		200%;
+	padding-bottom: 0px;
+	margin-bottom: 	0px;
 	}
 h2 {
 	font-family: 	"Raleway";
@@ -56,10 +58,14 @@ h4 {
 	text-align: 	center;
 	font-style: 	italic;
 	}
+hr {
+	border: none;
+	}
 .page {
 	display: 		flex;
 	flex-direction: row;
 	min-height: 	100vh; /* Stretch vertical sidebar to bottom */
+	/*word-wrap: break-word;*/
 	}
 .sidebar {
 	order: 			1;
@@ -67,9 +73,13 @@ h4 {
 	padding-top: 	3vw;
 	padding-left:  	2vw;
 	padding-right: 	2vw;
-	background:		rgb(226, 248, 211);
-	display: 		flex;
 	flex-direction: column;
+	display: 		flex;	/* Only show on widescreen displays */
+	background: 	#222;
+	color: 			white;
+	}
+.sidebar a {
+	color: white;
 	}
 .sidebar-headshot {
 	align-self: 	center;
@@ -81,6 +91,8 @@ h4 {
 	}
 .sidebar-section {
 	margin-bottom: 	1vw;
+	margin-left: 	0vw;  /* Adjust this for smaller screens */			
+	/*width: 	 		100%; /* Adjust this for smaller screens */
 	}
 .sidebar-table-row {
 	display: 		flex;
@@ -94,11 +106,22 @@ h4 {
 	margin-top:		1vh;
 	}
 .sidebar-table-row-left {
-	min-width: 		12vw;
+	min-width: 		16vw;
+	width: 			auto;
+	white-space: 	nowrap;
+  	overflow: 		hidden;
+  	text-overflow: 	ellipsis;
 	}
 .sidebar-table-row-right {
 	width: 			auto;
+	white-space: 	nowrap;
+  	overflow: 		hidden;
+  	text-overflow: 	ellipsis;
 	}
+.sidebar-block {
+	display: 		flex;
+	flex-direction: column;
+}
 .main-content {
 	order: 			2;
 	padding-top: 	3vw;
@@ -143,32 +166,9 @@ h4 {
 	margin-left:  	2vw;
 	margin-right: 	2vw;
 	}
-
-/* brendan changes // START */
-hr {
-	border: none;
-}
-
-.sidebar {
+.small-screen-header { /* Mobile display */
 	display: none;
-	background: #222;
-	color: white;
-}
-
-.sidebar a {
-	color: white;
-}
-
-h1 {
-	padding-bottom: 0px;
-	margin-bottom: 0px;
-}
-
-.small-screen-header {
-	display: none;
-}
-
-/* brendan changes // END */
+	}
 
 @media print {  
 	@page {
@@ -182,48 +182,111 @@ h1 {
 
 /* Responsive page layout */
 /* Old phones */
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
 	.page {
-		background: blue;
-  	}
-
-	.small-screen-header {
+		flex-direction: column;
+		min-width: 100%;
+		}
+	.sidebar {
+		min-width: 100%;
+		padding-right: 	2vw;
+		}
+	.sidebar-block {
+		display: 		flex;
+		flex-direction: column;
+		}
+	.sidebar-section {
+		min-width:		100%;
+		margin-left: 	2vw;
+		margin-right: 	2vw;
+		}
+	.sidebar-table-row-right {
+		margin-left: 1vw;
+		}
+	.fa {
+		margin-left:  	0vw;
+		}
+	.main-section-table-row {
+		display: 		flex;
+		flex-direction: column;
+		min-width: 		100%;
+		}
+	.main-section-table-half-col {
+		min-width: 	 	100%;
+		}
+/*	.small-screen-header {
 		display: block;
-	}
+	}*/
 }
 /* iPhones, small tablets */
-@media screen and (min-width: 320px) and (max-width: 720px) {
+@media screen and (min-width: 591px) and (max-width: 719px) {
 	.page {
-		background: green;
-	}
-
-	.small-screen-header {
-		display: block;
-	}
+		flex-direction: column;
+		min-width: 		100%;
+		}
+	.sidebar {
+		min-width: 		100%;
+		padding-right: 	2vw;
+		}
+	.sidebar-block {
+		display: 		flex;
+		flex-direction: column;
+		}
+	.sidebar-section {
+		min-width:		100%;
+		margin-left: 	2vw;
+		margin-right: 	2vw;
+		}
+	.sidebar-table-row-right {
+		margin-left: 	1vw;
+		}
+	.fa {
+		margin-left:  	0vw;
+		}
 }
 /* iPads & tablets */
-@media screen and (min-width: 720px) and (max-width: 1024px) {
+@media screen and (min-width: 720px) and (max-width: 1023px) {
 	.page {
-		background: yellow;
-	}
+		flex-direction: column;
+		min-width: 100%;
+		}
+	.sidebar {
+		min-width: 100%;
+		padding-right: 	5vw;
+		}
+	.sidebar-block {
+		display: 		flex;
+		flex-direction: row;
+		}
 
-	.small-screen-header {
-		display: block;
-	}
+	.sidebar-section {
+		min-width:		50%;
+		margin-left: 	2vw;
+		}
+
+	.sidebar-table-row-right {
+		margin-left: 1vw;
+		}
+	.fa {
+		margin-left:  	0vw;
+		}
 }
 /* PC master race (desktop) */
 @media screen and (min-width: 1024px) {
 	.page {
-		
-	}
-	/* brendan changes // START */
-	.sidebar {
-		display: flex;
-	}
+		flex-direction: row;
+		}
 
-	.small-screen-header {
+	.sidebar-section {
+		margin-left: 	0vw;
+		}
+	.fa {
+		margin-left:  	2vw;
+		}
+
+/*	.small-screen-header {
 		display: none;
-	}
+	}*/
 	/* brendan changes // END */
 }
 </style>
@@ -243,127 +306,112 @@ h1 {
 		
 		<h1>Luke Taylor</h1>
 		<h4>Software engineer, Erlang specialist</h4>
-		
-		<div class="sidebar-section">
-			<h2>Details</h2>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Birthday</div>
-			   	<div class="sidebar-table-row-right">3rd September 1987 (29)</div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >City of residence</div>
-			   	<div class="sidebar-table-row-right">Sydney, Australia</div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Languages</div>
-			   	<div class="sidebar-table-row-right">English (native)</div>
-				</div>
-			<hr>
-		</div>
 
-		<div class="sidebar-section">
-			<h2 >Contact</h2>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Email</div>
-			   	<div class="sidebar-table-row-right"><a href="mailto:luke.j.taylor87@gmail.com">luke.j.taylor87@gmail.com</a></div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Skype</div>
-			   	<div class="sidebar-table-row-right">luke_helian</div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Time zone</div>
-			   	<div class="sidebar-table-row-right">AEST (UTC + 10)</div>
+		<div class="sidebar-block">
+			
+			<div class="sidebar-section">
+				<h2>Details</h2>
+				<hr>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" >Birthday</div>
+					   	<div class="sidebar-table-row-right">3rd September 1987 (29)</div>
+						</div>
+					<hr>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" >Location</div>
+					   	<div class="sidebar-table-row-right">Sydney, Australia</div>
+						</div>
+					<hr>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" >Languages</div>
+					   	<div class="sidebar-table-row-right">English (native)</div>
+						</div>
+					<hr>
 			</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Mobile</div>
-			   	<div class="sidebar-table-row-right">+61 423 185 203</div>
-				</div>
-			<hr>
-		</div>
 
-		<div class="sidebar-section">
-			<h2 >Links</h2>
-			<hr>
-			<div class="sidebar-table-row-links">
-				<div class="sidebar-table-row-left" ><i class="fa fa-linkedin-square fa-lg"></i><h3>LinkedIn</h3></div>
-			   	<div class="sidebar-table-row-right"><a href ="https://www.linkedin.com/in/lukejtaylor">
-			   https://www.linkedin.com/in/lukejtaylor</a></div>
+			<div class="sidebar-section">
+				<h2 >Contact</h2>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Email</div>
+				   	<div class="sidebar-table-row-right"><a href="mailto:luke.j.taylor87@gmail.com">luke.j.taylor87@gmail.com</a></div>
+					</div>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Skype</div>
+				   	<div class="sidebar-table-row-right">luke_helian</div>
+					</div>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Time zone</div>
+				   	<div class="sidebar-table-row-right">AEST (UTC + 10)</div>
+				</div>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Mobile</div>
+				   	<div class="sidebar-table-row-right">+61 423 185 203</div>
+					</div>
+				<hr>
 			</div>
-			<div class="sidebar-table-row-links">
-				<div class="sidebar-table-row-left" ><i class="fa fa-github-square fa-lg"></i></i><h3>GitHub</h3></div>
-			   	<div class="sidebar-table-row-right"><a href="https://github.com/JediLuke">https://github.com/JediLuke</a></div>
-			</div>
-			<br><hr>
-		</div>
 
-		<div class="sidebar-section">
-			<h2 >References</h2>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Brendan Myers</div>
-			   	<div class="sidebar-table-row-right">Co-Founder of SkyGrid</div>
+		</div>
+		<div class="sidebar-block">
+
+				<div class="sidebar-section">
+					<h2 >Links</h2>
+					<hr>
+					<div class="sidebar-table-row-links">
+						<div class="sidebar-table-row-left" ><i class="fa fa-linkedin-square fa-lg"></i><h3>LinkedIn</h3></div>
+					   	<div class="sidebar-table-row-right"><a href ="https://www.linkedin.com/in/lukejtaylor">
+					   https://www.linkedin.com/in/lukejtaylor</a></div>
+					</div>
+					<div class="sidebar-table-row-links">
+						<div class="sidebar-table-row-left" ><i class="fa fa-github-square fa-lg"></i></i><h3>GitHub</h3></div>
+					   	<div class="sidebar-table-row-right"><a href="https://github.com/JediLuke">https://github.com/JediLuke</a></div>
+					</div>
+					<div class="sidebar-table-row-links">
+						<div class="sidebar-table-row-left" ><i class="fa fa-file-text fa-lg"></i></i><h3>Website</h3></div>
+					   	<div class="sidebar-table-row-right"><a href="http:jediluke.tech">jediluke.tech</a></div>
+					</div>
+					<br><hr>
 				</div>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" ></div>
-			   	<div class="sidebar-table-row-right"><a href="mailto:brendan@skygrid.io">brendan@skygrid.io</a></div>
+
+				<div class="sidebar-section">
+					<h2 >References</h2>
+					<hr>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" >Brendan Myers</div>
+					   	<div class="sidebar-table-row-right">Co-Founder of SkyGrid</div>
+						</div>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" ></div>
+					   	<div class="sidebar-table-row-right"><a href="mailto:brendan@skygrid.io">brendan@skygrid.io</a></div>
+						</div>
+					<hr>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" >Owais Sharaq</div>
+					   	<div class="sidebar-table-row-right">Line manager at Ericsson</div>
+						</div>
+					<div class="sidebar-table-row">
+						<div class="sidebar-table-row-left" ></div>
+					   	<div class="sidebar-table-row-right"><a href="mailto:owais.o.sharaq@ericsson.com">owais.o.sharaq@ericsson.com</a></div>
+						</div>
+					<hr>
 				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Owais Sharaq</div>
-			   	<div class="sidebar-table-row-right">Line manager at Ericsson Australia</div>
-				</div>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" ></div>
-			   	<div class="sidebar-table-row-right"><a href="mailto:owais.o.sharaq@ericsson.com">owais.o.sharaq@ericsson.com</a></div>
-				</div>
-			<hr>
 		</div>
 	</aside>
 
 	<!-- Main section -->
 	<main class="main-content">
 
-		<div class="small-screen-header">
-			<img id="headshot2" src="" alt="Use the force, Luke!">
-			
-			<h1>Luke Taylor</h1>
-			<h4>Software engineer, Erlang specialist</h4>
-			
-			<h2>Details</h2>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Birthday</div>
-			   	<div class="sidebar-table-row-right">3rd September 1987 (29)</div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >City of residence</div>
-			   	<div class="sidebar-table-row-right">Sydney, Australia</div>
-				</div>
-			<hr>
-			<div class="sidebar-table-row">
-				<div class="sidebar-table-row-left" >Languages</div>
-			   	<div class="sidebar-table-row-right">English (native)</div>
-				</div>
-			<hr>
-		</div>
-
 		<div class="section-heading">
 			<h2>Overview</h2>
 			<hr>
 			I am a software engineer specialising in Erlang development. I have very good working knowledge of OTP architecture and design principles, and a true love of functional programming. My most recent project has been co-founding and developing an internet of things platform, programmed in Erlang, designed to scale to hundreds of thousands of connected devices.
 			<br><br>
-			I was one of three former-Ericsson engineers to found SkyGrid, the IoT platform company - going through that journey has accelerated my professional development by years, and I now have a much better understanding of the technology industry, and what makes a successful technology business. I was exposed to a wide variety of roles, both technical and non-technical, as well as training in many aspects of startups and business through the accelerator program we participated in - <a href="https://muru-d.com/">MuruD</a>, one of Australia's top accelerator programs. The strategy has changed over time, as is quite common for tech startups, and it is with the blessing of my co-founders that I am seeking to leave the company and find a position where my skills as an Erlang developer can be fully utilized. I firmly believe this experience has made me a better developer and team member, and I bring many skills to bring to my next placement.
+			I was one of three former-Ericsson engineers to found SkyGrid, the IoT (Internet of Things) platform company - going through that journey has accelerated my professional development by years, and I now have a much better understanding of the technology industry, and what makes a successful technology business. I was exposed to a wide variety of roles, both technical and non-technical, as well as training in many aspects of startups and business through the startup accelerator program we participated in - <a href="https://muru-d.com/">MuruD</a>, one of Australia's top accelerator programs. The strategy has changed over time, as is quite common for tech startups, and it is with the blessing of my co-founders that I am seeking to leave the company and find a position where my skills as an Erlang developer can be fully utilized. I firmly believe this experience has made me a better developer and team member, and I bring many skills to bring to my next placement.
 			<br><br>
-			I see an opportunity with company X to apply my skills to a field that can substantially benefit from new technology, to improve the lives of all. I believe I can bring great value as a software engineer and Erlang specialist - but I also bring an innovative spirit. My experiences at both large companies (namely Ericsson, original creators of Erlang, and where I first learned it) and in startups give me a good balance of process and agility. I am passionate about creating quality work, whilst continuously expanding my expertise.
+			I believe I can bring great value as a software engineer and Erlang specialist - but I also bring an innovative spirit. My experiences at both large companies (namely Ericsson, original creators of Erlang, and where I first learned it) and in startups give me a good balance of process and agility. I am passionate about creating quality work, whilst continuously expanding my expertise. Never stop learning!
 			<br><br>
 
 
@@ -377,7 +425,7 @@ h1 {
 				<div class="main-section-table-half-col">
 					<i class="fa fa-code"></i></i><h3>Erlang & OTP</h3>
 					<div class="skill-desc">
-						2 Years experience developing in Erlang. We used rebar3 as our build tool, mnesia for the database (Riak sure looks cool though...) and all the usual Erlang tools such as eunit & common test, dialyzer and observer. I have deployed YAWS in production as RESTful API servers, then later Cowboy for both REST and websockets. I have a love of functional programming and the actor model and have extended my education in object oriented design patterns to the functional domain: I highly recommend <a href="http://jsan.stu.edu.tw/FreeBSD/distfiles/erlang-doc/r13b02/master_thesis_patterns.pdf">this thesis</a> as a great reference for implementing functional design patterns as Erlang behaviours.
+						2 Years experience developing in Erlang. We used rebar3 as our build tool (see <a href="https://github.com/JediLuke/JediLuke-site">here</a> for an example release), mnesia for the database (Riak sure looks cool though!) and all the usual Erlang tools such as eunit & common test, dialyzer and observer. I have deployed YAWS in production as RESTful API servers, then later Cowboy for both REST and websockets. I have a love of functional programming and the actor model, and have extended my education in object oriented design patterns to the functional domain: I highly recommend <a href="http://jsan.stu.edu.tw/FreeBSD/distfiles/erlang-doc/r13b02/master_thesis_patterns.pdf">this thesis</a> as a great reference for implementing functional design patterns as Erlang behaviours.
 					</div>
 				</div>
 				<div class="main-section-table-half-col">
@@ -390,9 +438,9 @@ h1 {
 
 			<div class="main-section-table-row">
 				<div class="main-section-table-half-col">
-					<i class="fa fa-microchip"></i><h3>Internet of Things & network protocols</h3>
+					<i class="fa fa-microchip"></i><h3>IoT & network protocols</h3>
 					<div class="skill-desc">
-						After founding an IoT startup I am completely across all the latest developments in IoT from devices through to network and platforms. I have used Sigfox and LoRa (LPWAN) protocols and implemented devices which use them in both Javascript and Python. I have also developed an acute knowledge of the IoT "industry", and am well placed to advise on movements in this space. I am also familiar with standard OSI model, TCP/IP and new web standards such as websockets, which is used as the primary interface to the SkyGrid platform. IoT has many applications in the health sector, especially if you consider combining it with AR technology such as the hololens. We did some proof of concepts using industrial equipment and AR ourselves, it's very cool to see.
+						After founding an IoT (Internet of Things) startup I am up to date with the latest in IoT, from devices through to network and platforms. I have used Sigfox and LoRa (LPWAN) protocols and implemented devices which use them in both Javascript and Python. I have also developed an acute knowledge of the IoT "industry", and am well placed to advise on movements in this space. I am also familiar with standard OSI model, TCP/IP and new web standards such as websockets, which is used as the primary interface to the SkyGrid platform. IoT has many exciting applications in the health sector (for example, presenting real-time data to a doctor/nurse via an augmented reality interface, such as the Hololens). We did some proof of concepts using industrial equipment and AR ourselves, it's very cool to see.
 					</div>
 				</div>
 				<div class="main-section-table-half-col">
@@ -420,15 +468,15 @@ h1 {
 
 			<div class="main-section-table-row">
 				<div class="main-section-table-half-col">
-					<i class="fa fa-users"></i><h3>Entrepeneurship, team leadership</h3>
+					<i class="fa fa-users"></i><h3>Entrepeneurship, leadership</h3>
 					<div class="skill-desc">
 						Taking the plunge to found a startup has educated me in so many things. I have a much deeper appreciation for what makes a successful technology company, and how the technology strategy must align with the overall business need. I am always trying to innovate and create new ideas and applications. I have successfully managed developers and interns of other disciplines throughout the lifetime of my startup, including remote workers, as well as functioning as a remote worker myself.
 					</div>
 				</div>
 				<div class="main-section-table-half-col">
-					<i class="fa fa-linux"></i><h3>General programming and sys admin</h3>
+					<i class="fa fa-linux"></i><h3>Programming and sys admin</h3>
 					<div class="skill-desc">
-						Although Erlang is my preferred language, I have solud fundamentals and are therefore capable at most languages. In particular I have used Python, Java and Javascript professionally, though I also deeply love Lisp. I'm competent at HTML/CSS, and have a very good understanding of object orientation. I'm passionate about good documentation, and code quality in general. I have solid experience using Linux, particularly FreeBSD.
+						Although Erlang is my preferred language, I have solid fundamentals and are therefore capable at most languages. In particular I have used Python, Java and Javascript professionally, though I also deeply love Lisp. Good with bash/shell. I'm competent at HTML/CSS, and have a very good understanding of object orientation. I'm passionate about good documentation, and code quality in general. I have solid experience using Linux, particularly FreeBSD.
 					</div>
 				</div>
 			</div>
@@ -464,7 +512,7 @@ h1 {
 			   			<div class="skill-desc">
 			   			<!-- Align both headers on same line -->
 			   			<div style="text-align:center">
-    						<span style="float:left"><h3>RF & Integration Engineer, Android developer</h3></span>
+    						<span style="float:left"><h3>RF & Software Engineer</h3></span>
     						<span style="float:right"><h3>Nov 2013 to July 2015</h3></span>
 						</div>
 						<br><br>
@@ -482,11 +530,11 @@ h1 {
 			   			<div class="skill-desc">
 			   			<!-- Align both headers on same line -->
 			   			<div style="text-align:center">
-    						<span style="float:left"><h3>Control systems engineer (undergraduate placement)</h3></span>
+    						<span style="float:left"><h3>Control systems engineer</h3></span>
     						<span style="float:right"><h3>Dec 2012 to Feb 2013</h3></span>
 						</div>
 			   			<br><br>
-			   			Stationed at Cape Lambert Port A, I was responsible for debugging PLC code on faulty plant such as car dumpers. As well as day to day maintenance, I removed hundreds of 'forces' (manual overrides) from the live codebase. My turnkey project was a root cause analysis of dust collectors scattered across the site, which were a major cause of downtime. I was able to locate and fix the faulty code, including modifying the SCADA GUI and alarm configuration database. The equipment was primarily GE Fanuc PLCs.
+			   			Stationed at Cape Lambert Port A for my undergraduate placement, I was responsible for debugging PLC code on faulty plant such as car dumpers. As well as day to day maintenance, I removed hundreds of 'forces' (manual overrides) from the live codebase. My turnkey project was a root cause analysis of dust collectors scattered across the site, which were a major cause of downtime. I was able to locate and fix the faulty code, including modifying the SCADA GUI and alarm configuration database. The equipment was primarily GE Fanuc PLCs.
 			   			</div>
 			   		</div>	
 				</div>
@@ -542,8 +590,6 @@ h1 {
 	 The reason I've done this is so that I can share this resume as a single HTML file -->
 <script type="text/javascript">
 function setPictures() {
-
-	document.getElementById('headshot2').setAttribute( 'src', 'data:image/jpeg;base64,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');
 
 	// Set headshot
 	document.getElementById('headshot').setAttribute( 'src', 'data:image/jpeg;base64,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');
