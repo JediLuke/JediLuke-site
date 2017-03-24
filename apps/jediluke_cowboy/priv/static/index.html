@@ -22,10 +22,10 @@
 	Read Me
 	*******
 
-	Although this file is long, by not seperating the stylesheet and
+	Although this file is long, by not separating the stylesheet and
 	embedding images as Base64 encoded strings rather than external jpegs, I can
-	simply attach a simgle HTML file to emails or share or whatever without needing
-	to worry about attachments. It's more portable (so deal w/it haha).
+	simply attach a single HTML file to emails or share or whatever without needing
+	to worry about attachments.
 
 	-->
 
@@ -65,7 +65,6 @@ hr {
 	display: 		flex;
 	flex-direction: row;
 	min-height: 	100vh; /* Stretch vertical sidebar to bottom */
-	/*word-wrap: break-word;*/
 	}
 .sidebar {
 	order: 			1;
@@ -92,7 +91,6 @@ hr {
 .sidebar-section {
 	margin-bottom: 	1vw;
 	margin-left: 	0vw;  /* Adjust this for smaller screens */			
-	/*width: 	 		100%; /* Adjust this for smaller screens */
 	}
 .sidebar-table-row {
 	display: 		flex;
@@ -121,7 +119,7 @@ hr {
 .sidebar-block {
 	display: 		flex;
 	flex-direction: column;
-}
+	}
 .main-content {
 	order: 			2;
 	padding-top: 	3vw;
@@ -172,23 +170,22 @@ hr {
 
 @media print {  
 	@page {
-    /*size: 		210mm 297mm; /* A4 */
-    margin: 		0;
+    	/*size: 		210mm 297mm; /* A4 */
+    	margin: 		0;
+		}
 	}
-}
 @font-face {
 	font-family: 	'Raleway', sans-serif; 
-}
-
+	}
 /* Responsive page layout */
 /* Old phones */
 @media screen and (max-width: 590px) {
 	.page {
 		flex-direction: column;
-		min-width: 100%;
+		min-width: 		100%;
 		}
 	.sidebar {
-		min-width: 100%;
+		min-width: 		100%;
 		padding-right: 	2vw;
 		}
 	.sidebar-block {
@@ -201,7 +198,7 @@ hr {
 		margin-right: 	2vw;
 		}
 	.sidebar-table-row-right {
-		margin-left: 1vw;
+		margin-left: 	1vw;
 		}
 	.fa {
 		margin-left:  	0vw;
@@ -214,10 +211,7 @@ hr {
 	.main-section-table-half-col {
 		min-width: 	 	100%;
 		}
-/*	.small-screen-header {
-		display: block;
-	}*/
-}
+	}
 /* iPhones, small tablets */
 @media screen and (min-width: 591px) and (max-width: 719px) {
 	.page {
@@ -243,7 +237,7 @@ hr {
 	.fa {
 		margin-left:  	0vw;
 		}
-}
+	}
 /* iPads & tablets */
 @media screen and (min-width: 720px) and (max-width: 1023px) {
 	.page {
@@ -258,42 +252,35 @@ hr {
 		display: 		flex;
 		flex-direction: row;
 		}
-
 	.sidebar-section {
 		min-width:		50%;
 		margin-left: 	2vw;
 		}
-
 	.sidebar-table-row-right {
 		margin-left: 1vw;
 		}
 	.fa {
 		margin-left:  	0vw;
 		}
-}
+	}
 /* PC master race (desktop) */
 @media screen and (min-width: 1024px) {
 	.page {
 		flex-direction: row;
 		}
-
 	.sidebar-section {
 		margin-left: 	0vw;
 		}
 	.fa {
 		margin-left:  	2vw;
 		}
-
-/*	.small-screen-header {
-		display: none;
-	}*/
-	/* brendan changes // END */
-}
+	}
 </style>
 </head>
 
 
 <body class="page" onload="setPictures()">
+
 	<!-- Pictures are attached as Base64 encoded strings (enabling me
 	to share this page as a single file) which are long and clutter the
 	HTML, so I use a tiny bit of javascript to update them once the page loads,
@@ -308,7 +295,6 @@ hr {
 		<h4>Software engineer, Erlang specialist</h4>
 
 		<div class="sidebar-block">
-			
 			<div class="sidebar-section">
 				<h2>Details</h2>
 				<hr>
@@ -353,51 +339,50 @@ hr {
 					</div>
 				<hr>
 			</div>
-
 		</div>
+
 		<div class="sidebar-block">
-
-				<div class="sidebar-section">
-					<h2 >Links</h2>
-					<hr>
-					<div class="sidebar-table-row-links">
-						<div class="sidebar-table-row-left" ><i class="fa fa-linkedin-square fa-lg"></i><h3>LinkedIn</h3></div>
-					   	<div class="sidebar-table-row-right"><a href ="https://www.linkedin.com/in/lukejtaylor">
-					   https://www.linkedin.com/in/lukejtaylor</a></div>
-					</div>
-					<div class="sidebar-table-row-links">
-						<div class="sidebar-table-row-left" ><i class="fa fa-github-square fa-lg"></i></i><h3>GitHub</h3></div>
-					   	<div class="sidebar-table-row-right"><a href="https://github.com/JediLuke">https://github.com/JediLuke</a></div>
-					</div>
-					<div class="sidebar-table-row-links">
-						<div class="sidebar-table-row-left" ><i class="fa fa-file-text fa-lg"></i></i><h3>Website</h3></div>
-					   	<div class="sidebar-table-row-right"><a href="http:jediluke.tech">jediluke.tech</a></div>
-					</div>
-					<br><hr>
+			<div class="sidebar-section">
+				<h2 >Links</h2>
+				<hr>
+				<div class="sidebar-table-row-links">
+					<div class="sidebar-table-row-left" ><i class="fa fa-linkedin-square fa-lg"></i><h3>LinkedIn</h3></div>
+				   	<div class="sidebar-table-row-right"><a href ="https://www.linkedin.com/in/lukejtaylor">
+				   https://www.linkedin.com/in/lukejtaylor</a></div>
 				</div>
-
-				<div class="sidebar-section">
-					<h2 >References</h2>
-					<hr>
-					<div class="sidebar-table-row">
-						<div class="sidebar-table-row-left" >Brendan Myers</div>
-					   	<div class="sidebar-table-row-right">Co-Founder of SkyGrid</div>
-						</div>
-					<div class="sidebar-table-row">
-						<div class="sidebar-table-row-left" ></div>
-					   	<div class="sidebar-table-row-right"><a href="mailto:brendan@skygrid.io">brendan@skygrid.io</a></div>
-						</div>
-					<hr>
-					<div class="sidebar-table-row">
-						<div class="sidebar-table-row-left" >Owais Sharaq</div>
-					   	<div class="sidebar-table-row-right">Line manager at Ericsson</div>
-						</div>
-					<div class="sidebar-table-row">
-						<div class="sidebar-table-row-left" ></div>
-					   	<div class="sidebar-table-row-right"><a href="mailto:owais.o.sharaq@ericsson.com">owais.o.sharaq@ericsson.com</a></div>
-						</div>
-					<hr>
+				<div class="sidebar-table-row-links">
+					<div class="sidebar-table-row-left" ><i class="fa fa-github-square fa-lg"></i></i><h3>GitHub</h3></div>
+				   	<div class="sidebar-table-row-right"><a href="https://github.com/JediLuke">https://github.com/JediLuke</a></div>
 				</div>
+				<div class="sidebar-table-row-links">
+					<div class="sidebar-table-row-left" ><i class="fa fa-file-text fa-lg"></i></i><h3>Website</h3></div>
+				   	<div class="sidebar-table-row-right"><a href="http:jediluke.tech">jediluke.tech</a></div>
+				</div>
+				<br><hr>
+			</div>
+
+			<div class="sidebar-section">
+				<h2 >References</h2>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Brendan Myers</div>
+				   	<div class="sidebar-table-row-right">Co-Founder of SkyGrid</div>
+					</div>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" ></div>
+				   	<div class="sidebar-table-row-right"><a href="mailto:brendan@skygrid.io">brendan@skygrid.io</a></div>
+					</div>
+				<hr>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" >Owais Sharaq</div>
+				   	<div class="sidebar-table-row-right">Line manager at Ericsson</div>
+					</div>
+				<div class="sidebar-table-row">
+					<div class="sidebar-table-row-left" ></div>
+				   	<div class="sidebar-table-row-right"><a href="mailto:owais.o.sharaq@ericsson.com">owais.o.sharaq@ericsson.com</a></div>
+					</div>
+				<hr>
+			</div>
 		</div>
 	</aside>
 
@@ -413,8 +398,6 @@ hr {
 			<br><br>
 			I believe I can bring great value as a software engineer and Erlang specialist - but I also bring an innovative spirit. My experiences at both large companies (namely Ericsson, original creators of Erlang, and where I first learned it) and in startups give me a good balance of process and agility. I am passionate about creating quality work, whilst continuously expanding my expertise. Never stop learning!
 			<br><br>
-
-
 		</div>
 
 		<div class="section-heading">
@@ -574,13 +557,14 @@ hr {
 					<img id="curtin-logo2" class="main-section-table-row-left-pic" src=""></a>
 			   		<div class="main-section-table-row-right">
 			   		<div class="skill-desc">
-			   		<a href="http://courses.curtin.edu.au/course_overview/undergraduate/electronic-computer-eng-computer-sci-double-degree"><h3>Double Degree, Computer Science and Electronic and Communication Engineering</h3></a><br><br>
-		   			Double bachelors (5 yrs). Graduated with honours in 2013. My undergraduate research project was in applying swarm intelligence algorithms to the problem of coordinating autonomous mining vehicles.
-		   			<ul>
-		   				<li>Bachelor of Engineering (Electronic and Communication Engineering), BEng(Curtin)</li>
-						<li>Bachelor of Science (Computer Science), BSc(Curtin)</li>
-					</ul>
-			   		</div>
+				   		<a href="http://courses.curtin.edu.au/course_overview/undergraduate/electronic-computer-eng-computer-sci-double-degree"><h3>Double Degree, Computer Science and Electronic and Communication Engineering</h3></a><br><br>
+			   			Double bachelors (5 yrs). Graduated with honours in 2013. My undergraduate research project was in applying swarm intelligence algorithms to the problem of coordinating autonomous mining vehicles.
+			   			<ul>
+			   				<li>Bachelor of Engineering (Electronic and Communication Engineering), BEng(Curtin)</li>
+							<li>Bachelor of Science (Computer Science), BSc(Curtin)</li>
+						</ul>
+				   		</div>
+					</div>
 				</div>
 			</div>
 		</div>
